@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <title>Проект на Иван Ангелов</title>
+      <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/jquery-ui.css" />
+	   <style>
+		.form-group {
+			max-width:450px;
+			margin: 0 auto;
+		}
+		
+		.btn {
+			margin-top: 10px;
+		}
+		
+		label.error {
+			color: red;
+		}
+		
+	</style>
+	</head>
+  <body>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+		<li><a href="register.html">Register</a></li>
+        <li class="active"><a href="#">Contacts</a></li>
+		<li><a href="search.html">Search</a></li>
+        </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <h1>Contacts!</h1>
+	<form id="contact-form" novalidate="true">
+		<div class="form-group">
+			<label for="fullName">User Name:</label>
+			<input id="fullName" class="form-control"type="text" placeholder="Enter your name" tabindex="1" autofocus="true" name="name"></input>
+		</div>
+		<div class="form-group">
+			<label for="emailField">Email:</label>
+			<input id="emailField" class="form-control" type="email" placeholder="Enter your email" tabindex="2" name="email"></input>
+		</div>
+		<div class="form-group">
+			<label for="msg">Message</label>
+			<textarea id="msg" class="form-control" type="text" placeholder="Enter your message" tabindex="3" name="msg" rows="6"></textarea>
+		</div>
+		<div class="form-group">
+			<input class="btn btn-primary" value="Submit" type="submit"></input>
+		</div>
+	</form>
+	  <script src="./scripts/jquery-3.1.1.min.js"></script>
+	<script src="./scripts/jquery-ui.js"></script>
+	<script src="./scripts/jquery.validate.min.js"></script>
+	<script src="./scripts/bootstrap.min.js"></script>
+	<script>
+		$("#contact-form").validate({
+			rules: {
+			<!-- name: required -->
+				name: {
+					required: true,
+					minlength: 3
+				},
+				email: {
+				  required: true,
+				  email: false,
+				  emailRegex: true
+				}
+			}
+		});
+		jQuery.validator.addMethod("emailRegex", function(value, element) {
+		  var regex = /^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+		  return regex.test( value );
+		}, 'Грешен мейл');		
+		
+		$("#contact-form").on("submit", function(e) {
+		e.preventDefault();
+		
+			var name = $("#fullName").val();
+			
+			if ($("#contact-form").valid()) {
+				name = name.replace('<', '&lt;');
+				name = name.replace('>', '&gt;')
+			};
+			
+			$("#test").html(name);
+		
+		})
+		
+		
+		
+	</script>
+  </body>
+  </html>

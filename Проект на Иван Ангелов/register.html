@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <title>Проект на Иван Ангелов</title>
+      <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/jquery-ui.css" />
+	<style>
+		#register-form {
+			padding: 15px;
+			max-width: 450px;
+			margin: 0 auto;
+			border: 1px solid black;
+			border-radius: 20px;
+			-moz-border-radius: 20px;
+			-webkit-border-radius: 20px;
+		}
+		
+		label.error {
+			color:red;
+		}
+		
+	</style>
+	</head>
+  <body>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">Register</a></li>
+		<li><a href="contacts.html">Contacts</a></li>
+		<li><a href="search.html">Search</a></li>
+        </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <div class="register-form">
+  <form id="register-form" novalidate="true">
+    <div>
+	  <div class="username">
+      <label for="name">Username:</label>
+      <input type="username" class="form-control" id="username" placeholder="Enter username" name="username" minlength="6" maxlength="15" required>
+    </div>
+	<div>
+	  <div class="fullname">
+      <label for="fullname">Fullname:</label>
+      <input type="fullname" class="form-control" id="fullname" placeholder="Enter fullname" name="fullname" minlength="3" maxlength="30" required>
+    </div>
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+    </div>
+	<div class="ConfirmPassword">
+      <label for="pwd">ConfirmPassword:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Confirm password" name="pwd" minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+	</div>
+	</form>
+    
+	<script src="./scripts/jquery-3.1.1.min.js"></script>
+	<script src="./scripts/jquery-ui.js"></script>
+	<script src="./scripts/jquery.validate.min.js"></script>
+	<script src="./scripts/bootstrap.min.js"></script>
+	<script>
+		$('#register-form').validate({
+		rules: {
+			user: {
+				required: true,
+				minlength: 6,
+				maxlength: 15
+			},
+			pass: {
+				required: true,
+				minlength: 6,
+				passDigitRule: true
+			},
+			cpass: {
+				required: true,
+				equalTo: '#password'
+			}
+		}
+		
+		});
+		
+		jQuery.validator.addMethod("passDigitRule", function(value, element) {
+		 for (var i = 0; i < value.length; i++) {
+			var currentChar = value[i].charCodeAt();
+			var isDigit = ( 48 <= currentChar && currentChar <= 57 );
+			if (isDigit) {
+				return true;
+			}
+		 }
+		  return false;
+		}, 'Моля въведете поне 1 цифра');
+		
+		
+	</script>
+  </body>
+  </html>
