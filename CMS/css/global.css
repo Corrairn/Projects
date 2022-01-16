@@ -1,0 +1,96 @@
+.page {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+
+.page > .page-title {
+    grid-column-start: 4;
+    grid-column-end: 10;
+    text-align: center;
+}
+
+.navigation,
+.message {
+    grid-column-start: 4;
+    grid-column-end: 10;
+}
+
+.message {
+    text-align: center;
+}
+
+.page form,
+.page .content,
+.page .content-list {
+    grid-column-start: 4;
+    grid-column-end: 10;
+
+    display: grid;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    align-items: center;
+
+}
+
+.page-logreg form {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.page-content-add form {
+    grid-template-columns: 1fr 1fr;
+}
+
+.page-logreg form label {
+    grid-column-start: 2;
+}
+
+.page-logreg form input {
+    grid-column-start: 3;
+}
+
+.page-logreg .button.logreg {
+    grid-column-start: 2;
+    grid-column-end: span 2;
+}
+
+.media {
+    float: right;
+    width: 50%;
+    padding: 0 0 5px 10px;
+}
+
+.media img {
+    width: 100%;
+}
+
+.page .content-list {
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+}
+
+.page .content-list .first {
+    grid-column-start: 1;
+}
+
+.editable {
+    position: relative;
+    display: block;
+}
+
+.editable .edit-control {
+    font-size: 14px;
+    display: none;
+    position: absolute;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.editable:hover .edit-control {
+    display: inline-block;
+}
+
+.edit-input {
+    width: 100%;
+}

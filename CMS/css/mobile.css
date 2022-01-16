@@ -1,0 +1,30 @@
+@media only screen and (max-width: 480px) {
+    .navigation {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+
+    .page > .page-title {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+
+    .page form,
+    .page .content {
+        grid-column-start: 1;
+        grid-column-end: -1;
+
+        grid-template-columns: 1fr;
+    }
+
+    .page-logreg form label,
+    .page-logreg form input,
+    .page-logreg .button.logreg {
+        grid-column-start: 1;
+        grid-column-end: auto;
+    }
+
+    .media {
+        width: 100%;
+    }
+}
